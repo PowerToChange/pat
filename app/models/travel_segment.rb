@@ -93,8 +93,8 @@ class TravelSegment < ActiveRecord::Base
     end
     
     # remove all tags that aren't in the tags line
-    to_remove_at_end.each do |tag_obj|
-      tagging_obj = taggings.find_by_tag_id tag_obj.id
+    to_remove_at_end.each do |tag_id|
+      tagging_obj = taggings.find_by_tag_id tag_id
       tagging_obj.destroy if tagging_obj
     end
 
