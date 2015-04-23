@@ -42,7 +42,7 @@ class EventGroupResourcesController < ApplicationController
     end
 
     respond_to do |format|
-      if @event_group_resource.update_attributes(:title => params[:title], :description => params[:description])
+      if @event_group_resource.update_attributes(:title => params[:title], :description => params[:description], :category => params[:category])
         format.json { render :json => { :success => true, :event_group_resources => [@event_group_resource] } }
       end
     end

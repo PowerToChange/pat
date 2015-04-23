@@ -74,7 +74,7 @@ Ext.define('Resource', {
 
 Ext.define('EventGroupResource', {
   extend: 'Ext.data.Model',
-  fields: ['id', 'url', 'title', 'description', 'human_size', 'project_ids', 'filetype']
+  fields: ['id', 'url', 'title', 'description', 'human_size', 'project_ids', 'filetype', 'category']
 });
 
 Ext.onReady(function(){
@@ -278,6 +278,15 @@ Ext.onReady(function(){
       field: {
         xtype: 'textfield',
         allowBlank: false,
+      }
+    }, {
+      text: 'Category',
+      flex: 1,
+      sortable: true,
+      dataIndex: 'category',
+      field: {
+        xtype: 'textfield',
+        allowBlank: true,
       }
     }, {
       text: 'Type',

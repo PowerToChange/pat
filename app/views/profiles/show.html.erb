@@ -130,18 +130,20 @@
       <h3 class="boxTitle">&nbsp;<img src="/images/boxTitle/resourcesIcon.png" class="boxTitleIcon"> Resources</h3>
       <div class="boxContent">
         <% if @resources.present? %>
-          <ul id="resourcesList">
-            <li><h4>Files/PDFs</h4></li>
-            <% @resources.each do |resource| %>
-              <li>
-                <% link_to resource.url, :target => "_blank" do %>
-                  <%= resource.title %>
-                  <img src="/images/downArrow.png">
-                <% end %>
-                <%= tooltip(resource.id, resource.description) %>
-              </li>
-            <% end %>
-          </ul>
+          <% @resources.group_by(&:category).each do |cat, resources| %>
+            <ul id="resourcesList">
+              <li><h4><%= cat || 'Files/PDFs' %></h4></li>
+              <% resources.each do |resource| %>
+                <li>
+                  <% link_to resource.url, :target => "_blank" do %>
+                    <%= resource.title %>
+                    <img src="/images/downArrow.png">
+                  <% end %>
+                  <%= tooltip(resource.id, resource.description) %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
         <% else %>
           <p class="smallDescriptionText">No resources available at this time.</p>
         <% end %>

@@ -327,7 +327,7 @@ background: rgba(255, 255, 255, 0.5);
   margin-top:10px;
 }
 
-#supportBox h4{
+#supportBox h4 {
   padding-left:10px;
   font-size:14px;
   font-weight:bold; 
@@ -501,9 +501,14 @@ background: rgba(255, 255, 255, 0.5);
   font-size:12px;
 }
 
+#resourcesBox ul {
+  padding-bottom: 5px;
+}
+
 #resourcesBox h4{
   font-weight:bold;
   padding:5px ;
+  padding-bottom: 0px;
 }
 
 #content {
