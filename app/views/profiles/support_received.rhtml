@@ -30,6 +30,7 @@
       <tr>
         <th>Date</th>
         <th>Donor Name</th>
+        <th>Donor Email</th>
         <th>Type</th>
         <th>OriginalAmount</th>
         <th>Conversion</th>
@@ -43,6 +44,7 @@
         <tr class="<%= i.even? ? 'even' : 'odd' %>">
           <td><%= donation.donation_date.strftime("%B %e, %Y") %></td>
           <td><%= donation.donor_name %></td>
+          <td><%= donation.donor_email %></td>
           <td><%= donation.donation_type %></td>
           <td align="right">
             <% if a = donation.respond_to?(:original_amount) && !donation.original_amount.to_s.empty? %>
@@ -59,7 +61,7 @@
         <tr>
       <% end %>
       <tr style="font-weight: bold">
-        <td class="right" colspan="3"><b>TOTAL</b></td>
+        <td class="right" colspan="4"><b>TOTAL</b></td>
         <td class="right"><b><%= number_to_currency(@profile.donations_total(:orig => true)) %></b></td>
         <td>&nbsp;</td>
         <td class="right" colspan="2"><b><%= number_to_currency(@profile.donations_total) %></b></td>
