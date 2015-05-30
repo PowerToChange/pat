@@ -6,9 +6,4 @@ class ManualDonation < ActiveRecord::Base
   LIST_TYPES = self.LIST_TYPES
 
   belongs_to :acceptance
-
-  # auto donations (that get dumped from project services) have donor_email in it, so we need to at least respond to the column
-  # even if it just returns nil
-  def donor_email
-  end
 end
