@@ -7,6 +7,9 @@
     <p><label for="manual_donation_donor_name">Donor name</label><br/>
     <%= text_field 'manual_donation', :donor_name %></p>
     
+    <p><label for="manual_donation_donor_email">Donor email</label><br/>
+    <%= text_field 'manual_donation', :donor_email %></p>
+
     <p><label for="manual_donation_donation_type_id">Donation type</label><br/>
     <%= select 'manual_donation', :donation_type_id, get_donation_types %>
     <%= observe_field :manual_donation_donation_type_id, :function => 'set_usd_visibility();' %>

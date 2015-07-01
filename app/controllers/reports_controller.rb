@@ -712,6 +712,7 @@ class ReportsController < ApplicationController
     
     # got a profile , now print all the donations that have come in for that acceptance
     columns = [ 'donor_name',
+      'donor_email',
       [ 'donation_type', 'type' ], 
       [ 'donation_reference_number', 'reference' ], 
       [ 'donation_date', 'date'] , 
