@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include ExceptionNotifiable
 
   if RAILS_ENV == 'production'
-    $server_url = "https://pat.powertochange.org"
+    $server_url = "https://pat1.powertochange.org"
   else
     $server_url = "http://dev.spt.campusforchrist.org"
   end
@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
   
   # let's just sweep everything, it's easier :P
   cache_sweeper :profiles_sweeper
+
+  #before_filter :send_to_pat2
 
   # Ensures that the user came from the campus intranet to
   # the login page.
@@ -54,6 +56,17 @@ class ApplicationController < ActionController::Base
   before_filter :get_notifications
 
   protected
+
+  def send_to_pat2
+    if params[:oldpat] == 'true'
+      cookies[:oldpat] = true
+      session[:oldpat] = true
+    elsif cookies[:oldpat] != true && session[:oldpat] != true && request.host == 'pat.powertochange.org'
+      redirect_to 'https://pat2.powertochange.org'
+      return false
+    end
+    return true
+  end
 
   # prevent Internet Explorer from caching Ajax GET request with Cache-Control:
   #  "max-age=0, private, must-revalidate"
