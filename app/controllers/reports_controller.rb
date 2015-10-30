@@ -170,7 +170,7 @@ class ReportsController < ApplicationController
         person.gender_short,
         acceptance.project.title,
         @eg.has_your_campuses ? person.campus_abbrev(:search_arrays => true) : :skip,
-        @eg.has_your_campuses ? person.year_in_school.year_desc : :skip,
+        @eg.has_your_campuses ? person.campus_involvements.first.try(:school_year).try(:year_desc) : :skip,
         person.person_local_phone,
         person.cell_phone,
         person.person_email
